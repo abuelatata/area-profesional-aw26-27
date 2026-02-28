@@ -1,1 +1,531 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Área Profesional · Abuela Tata / Navy & Blue</title>
+  <meta name="theme-color" content="#0f2a2a" />
 
+  <style>
+    :root{
+      --bg:#071012;
+      --card:#0c1b1f;
+      --card2:#0a171a;
+      --text:#eaf3f3;
+      --muted:#b5c9c9;
+      --brand:#86d6c9;   /* verde agua */
+      --brand2:#f2c6d6;  /* rosa bebé */
+      --danger:#ff6b6b;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius2:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(134,214,201,.14), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(242,198,214,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:18px}
+    header{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      padding:14px 0 6px;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(134,214,201,.35), rgba(242,198,214,.35));
+      border:1px solid var(--border);
+      display:grid; place-items:center;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
+    .title{line-height:1.1}
+    .title h1{margin:0; font-size:18px; letter-spacing:.2px}
+    .title p{margin:3px 0 0; color:var(--muted); font-size:13px}
+
+    .top-actions{display:flex; gap:10px; align-items:center}
+    .pill{
+      font-size:12px; color:var(--muted);
+      padding:8px 10px; border:1px solid var(--border);
+      border-radius:999px; background: rgba(255,255,255,.04);
+      display:flex; gap:8px; align-items:center;
+    }
+    .dot{width:8px; height:8px; border-radius:50%; background: var(--brand)}
+    .btn{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      transition: transform .06s ease, background .2s ease;
+      user-select:none;
+    }
+    .btn:hover{background: rgba(255,255,255,.10)}
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(134,214,201,.22), rgba(134,214,201,.10));
+      border-color: rgba(134,214,201,.35);
+    }
+    .btn.danger{
+      background: rgba(255,107,107,.12);
+      border-color: rgba(255,107,107,.35);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      padding:12px 0 6px;
+    }
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .panel h2{margin:0 0 10px; font-size:16px}
+    .panel p{margin:0; color:var(--muted); font-size:13px; line-height:1.35}
+
+    .search{
+      display:flex; gap:10px; align-items:center; margin-top:12px;
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(134,214,201,.35);
+      border-radius: 16px;
+      padding:10px 12px;
+    }
+    .search input{
+      width:100%;
+      border:0; outline:0;
+      background: transparent;
+      color:var(--text);
+      font-size:15px;
+    }
+    .search input::placeholder{color: rgba(234,243,243,.55)}
+    .kbd{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:6px 8px;
+      background: rgba(255,255,255,.04);
+      white-space:nowrap;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:12px;
+      padding:10px 0 22px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      padding:14px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.28);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height: 150px;
+      transition: transform .08s ease, border-color .2s ease;
+    }
+    .card:hover{
+      transform: translateY(-1px);
+      border-color: rgba(134,214,201,.25);
+    }
+    .card .head{
+      display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+    }
+    .tag{
+      font-size:11px;
+      color: rgba(234,243,243,.85);
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      white-space:nowrap;
+    }
+    .tag.pink{border-color: rgba(242,198,214,.35); background: rgba(242,198,214,.10)}
+    .tag.green{border-color: rgba(134,214,201,.35); background: rgba(134,214,201,.10)}
+    .tag.gray{opacity:.85}
+
+    .card h3{margin:0; font-size:15px}
+    .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.35}
+    .links{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto}
+    .link{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:9px 10px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.22);
+      font-size:13px;
+    }
+    .link:hover{border-color: rgba(134,214,201,.30)}
+    .link small{color:var(--muted)}
+    footer{
+      padding:12px 0 20px;
+      color:rgba(234,243,243,.55);
+      font-size:12px;
+    }
+
+    /* Login modal */
+    .modal-back{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.62);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:50;
+    }
+    .modal{
+      width:min(520px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .modal h2{margin:0 0 8px; font-size:16px}
+    .modal p{margin:0 0 12px; color:var(--muted); font-size:13px}
+    .modal .row{display:flex; gap:10px}
+    .modal input{
+      flex:1;
+      border:1px solid rgba(134,214,201,.35);
+      background: rgba(0,0,0,.22);
+      color:var(--text);
+      border-radius: 14px;
+      padding:12px 12px;
+      font-size:15px;
+      outline:none;
+    }
+    .error{
+      margin-top:10px;
+      color: var(--danger);
+      font-size: 13px;
+      display:none;
+    }
+
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns: repeat(2, minmax(0,1fr))}
+    }
+    @media (max-width: 620px){
+      .grid{grid-template-columns: 1fr}
+      .title h1{font-size:16px}
+      .top-actions{gap:8px}
+      .pill{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" title="Logo">
+          <!-- Si quieres, reemplaza 'logo.png' por tu logo real dentro del repo -->
+          <img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='AT';" />
+        </div>
+        <div class="title">
+          <h1>Área Profesional</h1>
+          <p>Catálogos · Tarifas · Pedidos · Documentación</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="pill"><span class="dot"></span><span id="sessionTxt">Acceso protegido</span></div>
+        <button class="btn primary" id="btnLogin">Entrar</button>
+        <button class="btn danger" id="btnLogout" style="display:none">Salir</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="panel">
+        <h2>Todo en un solo sitio (clientes y representantes)</h2>
+        <p>
+          Aquí tendrás centralizado lo importante: catálogos, tarifas, apps de pedidos, tablas de medidas, circulares y documentación.
+          <br/>Busca por nombre (ej. “Comunión 2026”, “AW 26/27”, “Navy”, “tarifa”, “medidas”).
+        </p>
+
+        <div class="search" title="Busca rápido">
+          <input id="q" type="search" placeholder="Buscar… (catálogo, tarifa, pedidos, medidas, circular, comunión…)" autocomplete="off" />
+          <div class="kbd">Ctrl/⌘ + K</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Notas rápidas</h2>
+        <p id="note">
+          • Subiremos los PDFs a una carpeta “docs/”.<br/>
+          • Los botones de “Pedidos” enlazan a tus PWAs actuales.<br/>
+          • Cuando quieras seguridad real, lo ponemos detrás de Cloudflare Access.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid" id="grid"></section>
+
+    <footer>
+      <div>© Abuela Tata / Navy & Blue · Área profesional (GitHub). Para migrar a WordPress se reutiliza exactamente esta estructura.</div>
+    </footer>
+  </div>
+
+  <!-- Login modal -->
+  <div class="modal-back" id="modalBack">
+    <div class="modal">
+      <h2>Acceso</h2>
+      <p>Introduce la clave de acceso (se puede cambiar cuando quieras).</p>
+      <div class="row">
+        <input id="pass" type="password" placeholder="Clave…" />
+        <button class="btn primary" id="doLogin">Entrar</button>
+      </div>
+      <div class="error" id="err">Clave incorrecta.</div>
+      <div style="margin-top:12px; display:flex; gap:10px; justify-content:flex-end;">
+        <button class="btn" id="closeModal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /**********************
+     * CONFIGURACIÓN
+     **********************/
+    const CONFIG = {
+      // ⚠️ Esto es un “filtro” visual (no seguridad real). Cambia la clave cuando quieras.
+      ACCESS_KEY: "ABUELATATA2026",
+
+      // Enlaces a tus apps ya existentes (pon aquí los tuyos reales)
+      links: {
+        pedidosComunion26: "https://abuelatata.github.io/pedidos-abuela-tata-comunion26/",
+        pedidosInviernoAw27: "https://abuelatata.github.io/invierno-aw-27/",
+        // ejemplo Navy (cámbialo si ya existe)
+        pedidosNavy: "https://abuelatata.github.io/pedidos-navy-and-blue/"
+      },
+
+      // PDFs (ideal: súbelos al repo en carpeta /docs y enlaza así)
+      docs: {
+        catalogoComunion26: "docs/catalogo-comunion-26.pdf",
+        tarifaComunion26: "docs/tarifa-comunion-26.pdf",
+        catalogoInviernoAw27: "docs/catalogo-invierno-aw-26-27.pdf",
+        tarifaInviernoAw27: "docs/tarifa-invierno-aw-26-27.pdf",
+        tablasMedidas: "docs/tablas-de-medidas.pdf",
+        circulares: "docs/circulares.pdf",
+        packingListGuia: "docs/guia-packing-list.pdf"
+      }
+    };
+
+    /**********************
+     * DATA: tarjetas
+     **********************/
+    const SECTIONS = [
+      {
+        title: "Abuela Tata · Comunión 2026",
+        tag: "Abuela Tata",
+        tagClass: "pink",
+        desc: "Catálogo, tarifa y acceso directo a la app de pedidos.",
+        items: [
+          { label:"📖 Catálogo (PDF)", href: CONFIG.docs.catalogoComunion26, type:"pdf" },
+          { label:"💶 Tarifa (PDF)", href: CONFIG.docs.tarifaComunion26, type:"pdf" },
+          { label:"🛍 App de pedidos", href: CONFIG.links.pedidosComunion26, type:"app" }
+        ]
+      },
+      {
+        title: "Abuela Tata · Invierno AW 26/27",
+        tag: "Abuela Tata",
+        tagClass: "green",
+        desc: "Documentación y pedidos de temporada invierno.",
+        items: [
+          { label:"📖 Catálogo (PDF)", href: CONFIG.docs.catalogoInviernoAw27, type:"pdf" },
+          { label:"💶 Tarifa (PDF)", href: CONFIG.docs.tarifaInviernoAw27, type:"pdf" },
+          { label:"🛍 App de pedidos", href: CONFIG.links.pedidosInviernoAw27, type:"app" }
+        ]
+      },
+      {
+        title: "Navy & Blue · Comunión niño",
+        tag: "Navy & Blue",
+        tagClass: "gray",
+        desc: "Pedidos, documentación y materiales de Navy & Blue.",
+        items: [
+          { label:"🛍 App de pedidos", href: CONFIG.links.pedidosNavy, type:"app" },
+          { label:"📄 Guía Packing List", href: CONFIG.docs.packingListGuia, type:"pdf" }
+        ]
+      },
+      {
+        title: "Tablas de medidas",
+        tag: "Herramientas",
+        tagClass: "green",
+        desc: "Tallas, medidas y equivalencias para reps y clientes.",
+        items: [
+          { label:"📏 Tablas de medidas (PDF)", href: CONFIG.docs.tablasMedidas, type:"pdf" }
+        ]
+      },
+      {
+        title: "Circulares y avisos",
+        tag: "Comunicados",
+        tagClass: "pink",
+        desc: "Información importante de campaña, repeticiones, plazos, etc.",
+        items: [
+          { label:"📢 Circulares (PDF)", href: CONFIG.docs.circulares, type:"pdf" }
+        ]
+      },
+      {
+        title: "Documentación",
+        tag: "Docs",
+        tagClass: "gray",
+        desc: "Instrucciones, procedimientos y documentos útiles.",
+        items: [
+          { label:"📄 Guía Packing List (PDF)", href: CONFIG.docs.packingListGuia, type:"pdf" }
+        ]
+      }
+    ];
+
+    /**********************
+     * SESSION (simple)
+     **********************/
+    const SESSION_KEY = "b2b_portal_ok";
+    const isAuthed = () => localStorage.getItem(SESSION_KEY) === "1";
+
+    function setAuthed(v){
+      if(v) localStorage.setItem(SESSION_KEY,"1");
+      else localStorage.removeItem(SESSION_KEY);
+      render();
+    }
+
+    /**********************
+     * RENDER
+     **********************/
+    const grid = document.getElementById("grid");
+    const q = document.getElementById("q");
+
+    function render(){
+      const authed = isAuthed();
+
+      document.getElementById("btnLogin").style.display = authed ? "none" : "inline-flex";
+      document.getElementById("btnLogout").style.display = authed ? "inline-flex" : "none";
+      document.getElementById("sessionTxt").textContent = authed ? "Sesión iniciada" : "Acceso protegido";
+
+      const query = (q.value || "").trim().toLowerCase();
+
+      grid.innerHTML = "";
+      const filtered = SECTIONS.filter(s => {
+        if(!query) return true;
+        const hay = (s.title+" "+s.tag+" "+s.desc+" "+s.items.map(i=>i.label).join(" ")).toLowerCase();
+        return hay.includes(query);
+      });
+
+      for(const s of filtered){
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const head = document.createElement("div");
+        head.className = "head";
+
+        const left = document.createElement("div");
+        const h3 = document.createElement("h3");
+        h3.textContent = s.title;
+        const p = document.createElement("p");
+        p.textContent = s.desc;
+        left.appendChild(h3);
+        left.appendChild(p);
+
+        const tag = document.createElement("div");
+        tag.className = `tag ${s.tagClass||""}`;
+        tag.textContent = s.tag;
+
+        head.appendChild(left);
+        head.appendChild(tag);
+
+        const links = document.createElement("div");
+        links.className = "links";
+
+        for(const it of s.items){
+          const a = document.createElement("a");
+          a.className = "link";
+          a.href = authed ? it.href : "#";
+          a.target = "_blank";
+          a.rel = "noopener";
+
+          a.innerHTML = `${it.label} <small>${it.type==="pdf"?"PDF":"Abrir"}</small>`;
+
+          if(!authed){
+            a.addEventListener("click", (e)=>{
+              e.preventDefault();
+              openModal();
+            });
+          }
+          links.appendChild(a);
+        }
+
+        card.appendChild(head);
+        card.appendChild(links);
+        grid.appendChild(card);
+      }
+    }
+
+    /**********************
+     * MODAL
+     **********************/
+    const modalBack = document.getElementById("modalBack");
+    const pass = document.getElementById("pass");
+    const err = document.getElementById("err");
+
+    function openModal(){
+      err.style.display = "none";
+      pass.value = "";
+      modalBack.style.display = "flex";
+      setTimeout(()=>pass.focus(), 50);
+    }
+    function closeModal(){
+      modalBack.style.display = "none";
+    }
+    function doLogin(){
+      const v = (pass.value||"").trim();
+      if(v === CONFIG.ACCESS_KEY){
+        setAuthed(true);
+        closeModal();
+      }else{
+        err.style.display = "block";
+      }
+    }
+
+    document.getElementById("btnLogin").addEventListener("click", openModal);
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.getElementById("doLogin").addEventListener("click", doLogin);
+    modalBack.addEventListener("click",(e)=>{ if(e.target===modalBack) closeModal(); });
+
+    document.getElementById("btnLogout").addEventListener("click", ()=>setAuthed(false));
+
+    pass.addEventListener("keydown",(e)=>{ if(e.key==="Enter") doLogin(); });
+
+    /**********************
+     * SEARCH SHORTCUT
+     **********************/
+    window.addEventListener("keydown",(e)=>{
+      const isMac = navigator.platform.toLowerCase().includes("mac");
+      const mod = isMac ? e.metaKey : e.ctrlKey;
+      if(mod && e.key.toLowerCase()==="k"){
+        e.preventDefault();
+        q.focus();
+      }
+      if(e.key==="Escape"){
+        closeModal();
+      }
+    });
+
+    q.addEventListener("input", render);
+
+    render();
+  </script>
+</body>
+</html>
