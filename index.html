@@ -25,6 +25,7 @@ body{
 header{
     text-align:center;
     margin-bottom:60px;
+    position:relative;
 }
 
 .logo{
@@ -131,6 +132,55 @@ footer{
     color:#a59788;
 }
 
+/* === Idiomas (añadido) === */
+.lang-switch{
+    position:absolute;
+    top:0;
+    right:0;
+    display:flex;
+    gap:8px;
+    align-items:center;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+}
+
+.lang-btn{
+    border:1px solid #e4d9cc;
+    background:rgba(255,255,255,0.75);
+    color:#6e4f3a;
+    border-radius:999px;
+    padding:7px 10px;
+    cursor:pointer;
+    font-size:13px;
+    letter-spacing:0.5px;
+    transition:all 0.2s ease;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.lang-btn:hover{
+    background:rgba(255,255,255,0.95);
+}
+
+.lang-btn.active{
+    border-color:#c8a27a;
+    background:rgba(200,162,122,0.18);
+}
+
+.flag{
+    font-size:15px;
+    line-height:1;
+}
+
+@media (max-width: 650px){
+    .lang-switch{
+        position:static;
+        justify-content:center;
+        margin-bottom:14px;
+    }
+}
+
 </style>
 </head>
 
@@ -139,45 +189,137 @@ footer{
 <div class="wrap">
 
 <header>
-    <img src="FIRMA TATA.png" class="logo">
-    <h1>ÁREA PROFESIONAL</h1>
-    <div class="subtitle">Colección Invierno AW 26/27</div>
+
+    <!-- Selector idiomas (añadido) -->
+    <div class="lang-switch" aria-label="Selector de idioma">
+        <button class="lang-btn" type="button" data-lang="es" title="Español"><span class="flag">🇪🇸</span> ES</button>
+        <button class="lang-btn" type="button" data-lang="en" title="English"><span class="flag">🇬🇧</span> EN</button>
+        <button class="lang-btn" type="button" data-lang="pt" title="Português"><span class="flag">🇵🇹</span> PT</button>
+    </div>
+
+    <img src="FIRMA TATA.png" class="logo" alt="Abuela Tata">
+    <h1 data-i18n="headerTitle">ÁREA PROFESIONAL</h1>
+    <div class="subtitle" data-i18n="headerSubtitle">Colección Invierno AW 26/27</div>
     <div class="divider"></div>
 </header>
 
 <div class="grid">
 
     <div class="card">
-        <h2>CATÁLOGO</h2>
-        <p>Visualiza o descarga el catálogo completo de la colección.</p>
-        <a href="docs/catalogo-invierno-aw-26-27.pdf" target="_blank" class="btn btn-main">
+        <h2 data-i18n="catalogTitle">CATÁLOGO</h2>
+        <p data-i18n="catalogDesc">Visualiza o descarga el catálogo completo de la colección.</p>
+        <a href="docs/catalogo-invierno-aw-26-27.pdf" target="_blank" class="btn btn-main" data-i18n="catalogBtn">
             Ver Catálogo
         </a>
     </div>
 
     <div class="card">
-        <h2>TARIFA DE PRECIOS</h2>
-        <p>Consulta la tarifa oficial vigente AW 26/27.</p>
-        <a href="docs/tarifa-invierno-aw-26-27.pdf" target="_blank" class="btn btn-soft">
+        <h2 data-i18n="priceTitle">TARIFA DE PRECIOS</h2>
+        <p data-i18n="priceDesc">Consulta la tarifa oficial vigente AW 26/27.</p>
+        <a href="docs/tarifa-invierno-aw-26-27.pdf" target="_blank" class="btn btn-soft" data-i18n="priceBtn">
             Ver Tarifa
         </a>
     </div>
 
     <div class="card">
-        <h2>APP DE PEDIDOS</h2>
-        <p>Acceso directo al sistema profesional de pedidos.</p>
-       <a href="https://abuelatata.github.io/invierno-aw-27/" target="_blank" class="btn btn-light">
+        <h2 data-i18n="ordersTitle">APP DE PEDIDOS</h2>
+        <p data-i18n="ordersDesc">Acceso directo al sistema profesional de pedidos.</p>
+       <a href="https://abuelatata.github.io/invierno-aw-27/" target="_blank" class="btn btn-light" data-i18n="ordersBtn">
            Ir a Pedidos
        </a>
     </div>
 
 </div>
 
-<footer>
+<footer data-i18n="footer">
 Abuela Tata · Área Profesional Exclusiva
 </footer>
 
 </div>
+
+<script>
+/* === i18n (añadido) === */
+const I18N = {
+  es: {
+    headerTitle: "ÁREA PROFESIONAL",
+    headerSubtitle: "Colección Invierno AW 26/27",
+    catalogTitle: "CATÁLOGO",
+    catalogDesc: "Visualiza o descarga el catálogo completo de la colección.",
+    catalogBtn: "Ver Catálogo",
+    priceTitle: "TARIFA DE PRECIOS",
+    priceDesc: "Consulta la tarifa oficial vigente AW 26/27.",
+    priceBtn: "Ver Tarifa",
+    ordersTitle: "APP DE PEDIDOS",
+    ordersDesc: "Acceso directo al sistema profesional de pedidos.",
+    ordersBtn: "Ir a Pedidos",
+    footer: "Abuela Tata · Área Profesional Exclusiva"
+  },
+  en: {
+    headerTitle: "PROFESSIONAL AREA",
+    headerSubtitle: "Winter Collection AW 26/27",
+    catalogTitle: "CATALOG",
+    catalogDesc: "View or download the full collection catalog.",
+    catalogBtn: "Open Catalog",
+    priceTitle: "PRICE LIST",
+    priceDesc: "Check the official price list for AW 26/27.",
+    priceBtn: "Open Price List",
+    ordersTitle: "ORDERING APP",
+    ordersDesc: "Direct access to the professional ordering system.",
+    ordersBtn: "Go to Orders",
+    footer: "Abuela Tata · Exclusive Professional Area"
+  },
+  pt: {
+    headerTitle: "ÁREA PROFISSIONAL",
+    headerSubtitle: "Coleção de Inverno AW 26/27",
+    catalogTitle: "CATÁLOGO",
+    catalogDesc: "Veja ou descarregue o catálogo completo da coleção.",
+    catalogBtn: "Abrir Catálogo",
+    priceTitle: "TABELA DE PREÇOS",
+    priceDesc: "Consulte a tabela oficial em vigor para AW 26/27.",
+    priceBtn: "Abrir Tabela",
+    ordersTitle: "APP DE ENCOMENDAS",
+    ordersDesc: "Acesso direto ao sistema profissional de encomendas.",
+    ordersBtn: "Ir para Encomendas",
+    footer: "Abuela Tata · Área Profissional Exclusiva"
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang] || I18N.es;
+
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(dict[key]) el.textContent = dict[key];
+  });
+
+  document.querySelectorAll(".lang-btn").forEach(btn=>{
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+
+  try{ localStorage.setItem("aw2627_lang", lang); }catch(e){}
+}
+
+(function init(){
+  let lang = "es";
+  try{
+    const saved = localStorage.getItem("aw2627_lang");
+    if(saved) lang = saved;
+    else {
+      const nav = (navigator.language || "").toLowerCase();
+      if(nav.startsWith("pt")) lang = "pt";
+      else if(nav.startsWith("en")) lang = "en";
+    }
+  }catch(e){}
+
+  setLang(lang);
+
+  document.querySelectorAll(".lang-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=> setLang(btn.dataset.lang));
+  });
+})();
+</script>
 
 </body>
 </html>
