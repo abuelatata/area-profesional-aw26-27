@@ -1,130 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Área Profesional · AW 26/27</title>
 
 <style>
+
 body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:#0f1a1c;
-  color:white;
+    margin:0;
+    font-family: "Georgia", serif;
+    background:#f5efe6;
+    background-image: radial-gradient(#e8dfd3 1px, transparent 1px);
+    background-size: 18px 18px;
+    color:#6e4f3a;
 }
+
 .wrap{
-  max-width:1000px;
-  margin:auto;
-  padding:20px;
+    max-width:1100px;
+    margin:auto;
+    padding:60px 25px;
 }
+
 header{
-  text-align:center;
-  margin-bottom:30px;
+    text-align:center;
+    margin-bottom:60px;
 }
+
+.logo{
+    max-width:260px;
+    margin-bottom:20px;
+}
+
 h1{
-  margin:0;
-  font-size:22px;
+    margin:0;
+    font-size:28px;
+    letter-spacing:2px;
+    font-weight:normal;
 }
-.sub{
-  color:#9fbcbc;
-  font-size:14px;
+
+.subtitle{
+    margin-top:10px;
+    font-size:15px;
+    color:#8b7b6b;
 }
+
+.divider{
+    width:80px;
+    height:1px;
+    background:#c8b6a6;
+    margin:30px auto;
+}
+
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
 }
+
 .card{
-  background:#162426;
-  padding:20px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.1);
+    background:#ffffff;
+    padding:40px 30px;
+    border-radius:14px;
+    border:1px solid #e4d9cc;
+    box-shadow:0 12px 35px rgba(0,0,0,0.05);
+    transition:all 0.35s ease;
+    position:relative;
 }
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 45px rgba(0,0,0,0.08);
+}
+
 .card h2{
-  margin-top:0;
-  font-size:18px;
+    font-size:18px;
+    font-weight:normal;
+    letter-spacing:1px;
+    margin-bottom:15px;
 }
+
+.card p{
+    font-size:14px;
+    color:#8b7b6b;
+    margin-bottom:20px;
+}
+
 .btn{
-  display:block;
-  margin-top:10px;
-  padding:10px;
-  border-radius:8px;
-  text-align:center;
-  text-decoration:none;
-  font-size:14px;
+    display:block;
+    text-align:center;
+    padding:13px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14px;
+    letter-spacing:0.5px;
+    transition:all 0.3s ease;
 }
-.btn-green{
-  background:#86d6c9;
-  color:#000;
+
+.btn-main{
+    background:#c8a27a;
+    color:white;
 }
-.btn-pink{
-  background:#f2c6d6;
-  color:#000;
+
+.btn-main:hover{
+    background:#b58c63;
 }
-.btn-gray{
-  background:#2a3a3d;
-  color:white;
+
+.btn-soft{
+    background:#d8b4a0;
+    color:white;
 }
+
+.btn-soft:hover{
+    background:#c69b84;
+}
+
+.btn-light{
+    background:#e9e2d8;
+    color:#6e4f3a;
+}
+
+.btn-light:hover{
+    background:#ddd3c6;
+}
+
 footer{
-  margin-top:40px;
-  text-align:center;
-  font-size:12px;
-  color:#7a9b9b;
+    margin-top:80px;
+    text-align:center;
+    font-size:12px;
+    color:#a59788;
 }
+
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
 
 <header>
-  <h1>Área Profesional · AW 26/27</h1>
-  <div class="sub">Invierno · Documentación y pedidos</div>
+    <img src="FIRMA TATA.png" class="logo">
+    <h1>ÁREA PROFESIONAL</h1>
+    <div class="subtitle">Colección Invierno AW 26/27</div>
+    <div class="divider"></div>
 </header>
 
 <div class="grid">
 
-  <div class="card">
-    <h2>📖 Catálogo AW 26/27</h2>
-    <a href="docs/catalogo-invierno-aw-26-27.pdf" target="_blank" class="btn btn-green">
-      Ver / Descargar catálogo
-    </a>
-  </div>
+    <div class="card">
+        <h2>CATÁLOGO</h2>
+        <p>Visualiza o descarga el catálogo completo de la colección.</p>
+        <a href="docs/CATALOGO ABUELA TATA INV26-27-comprimido.pdf" target="_blank" class="btn btn-main">
+            Ver Catálogo
+        </a>
+    </div>
 
-  <div class="card">
-    <h2>💶 Tarifa AW 26/27</h2>
-    <a href="docs/tarifa-invierno-aw-26-27.pdf" target="_blank" class="btn btn-pink">
-      Ver / Descargar tarifa
-    </a>
-  </div>
+    <div class="card">
+        <h2>TARIFA DE PRECIOS</h2>
+        <p>Consulta la tarifa oficial vigente AW 26/27.</p>
+        <a href="docs/TARIFA DE PRECIOS ABUELA TATA INV26-27.pdf" target="_blank" class="btn btn-soft">
+            Ver Tarifa
+        </a>
+    </div>
 
-  <div class="card">
-    <h2>🛍 App de Pedidos</h2>
-    <a href="https://abuelatata.github.io/invierno-aw-27/" target="_blank" class="btn btn-green">
-      Abrir app de pedidos
-    </a>
-  </div>
-
-  <div class="card">
-    <h2>📏 Tablas de Medidas</h2>
-    <a href="docs/tablas-de-medidas.pdf" target="_blank" class="btn btn-gray">
-      Ver tablas
-    </a>
-  </div>
-
-  <div class="card">
-    <h2>📢 Circulares</h2>
-    <a href="docs/circulares-aw-26-27.pdf" target="_blank" class="btn btn-gray">
-      Ver circulares
-    </a>
-  </div>
+    <div class="card">
+        <h2>APP DE PEDIDOS</h2>
+        <p>Acceso directo al sistema profesional de pedidos.</p>
+        <a href="#" class="btn btn-light">
+            Ir a Pedidos
+        </a>
+    </div>
 
 </div>
 
 <footer>
-  © Abuela Tata · Área Profesional AW 26/27
+Abuela Tata · Área Profesional Exclusiva
 </footer>
 
 </div>
+
 </body>
 </html>
