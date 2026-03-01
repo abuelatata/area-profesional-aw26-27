@@ -132,7 +132,7 @@ footer{
     color:#a59788;
 }
 
-/* === Idiomas (añadido) === */
+/* === Idiomas === */
 .lang-switch{
     position:absolute;
     top:0;
@@ -190,11 +190,10 @@ footer{
 
 <header>
 
-    <!-- Selector idiomas (añadido) -->
-    <div class="lang-switch" aria-label="Selector de idioma">
-        <button class="lang-btn" type="button" data-lang="es" title="Español"><span class="flag">🇪🇸</span> ES</button>
-        <button class="lang-btn" type="button" data-lang="en" title="English"><span class="flag">🇬🇧</span> EN</button>
-        <button class="lang-btn" type="button" data-lang="pt" title="Português"><span class="flag">🇵🇹</span> PT</button>
+    <div class="lang-switch">
+        <button class="lang-btn" type="button" data-lang="es"><span class="flag">🇪🇸</span> ES</button>
+        <button class="lang-btn" type="button" data-lang="en"><span class="flag">🇬🇧</span> EN</button>
+        <button class="lang-btn" type="button" data-lang="pt"><span class="flag">🇵🇹</span> PT</button>
     </div>
 
     <img src="FIRMA TATA.png" class="logo" alt="Abuela Tata">
@@ -229,6 +228,15 @@ footer{
        </a>
     </div>
 
+    <!-- NUEVA TARJETA MEDIA KIT -->
+    <div class="card">
+        <h2 data-i18n="mediaTitle">IMÁGENES ALTA RESOLUCIÓN</h2>
+        <p data-i18n="mediaDesc">Descarga el material fotográfico oficial en alta calidad para web, redes y comunicación.</p>
+        <a href="https://we.tl/t-eFIv8HxnPJ" target="_blank" class="btn btn-light" data-i18n="mediaBtn">
+            Descargar imágenes
+        </a>
+    </div>
+
 </div>
 
 <footer data-i18n="footer">
@@ -238,7 +246,6 @@ Abuela Tata · Área Profesional Exclusiva
 </div>
 
 <script>
-/* === i18n (añadido) === */
 const I18N = {
   es: {
     headerTitle: "ÁREA PROFESIONAL",
@@ -252,6 +259,9 @@ const I18N = {
     ordersTitle: "APP DE PEDIDOS",
     ordersDesc: "Acceso directo al sistema profesional de pedidos.",
     ordersBtn: "Ir a Pedidos",
+    mediaTitle: "IMÁGENES ALTA RESOLUCIÓN",
+    mediaDesc: "Descarga el material fotográfico oficial en alta calidad para web, redes y comunicación.",
+    mediaBtn: "Descargar imágenes",
     footer: "Abuela Tata · Área Profesional Exclusiva"
   },
   en: {
@@ -266,6 +276,9 @@ const I18N = {
     ordersTitle: "ORDERING APP",
     ordersDesc: "Direct access to the professional ordering system.",
     ordersBtn: "Go to Orders",
+    mediaTitle: "HIGH-RESOLUTION IMAGES",
+    mediaDesc: "Download the official high-resolution images for web and communication.",
+    mediaBtn: "Download images",
     footer: "Abuela Tata · Exclusive Professional Area"
   },
   pt: {
@@ -280,41 +293,29 @@ const I18N = {
     ordersTitle: "APP DE ENCOMENDAS",
     ordersDesc: "Acesso direto ao sistema profissional de encomendas.",
     ordersBtn: "Ir para Encomendas",
+    mediaTitle: "IMAGENS EM ALTA RESOLUÇÃO",
+    mediaDesc: "Descarregue as imagens oficiais em alta qualidade para web e comunicação.",
+    mediaBtn: "Descarregar imagens",
     footer: "Abuela Tata · Área Profissional Exclusiva"
   }
 };
 
 function setLang(lang){
   const dict = I18N[lang] || I18N.es;
-
   document.documentElement.lang = lang;
-
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const key = el.getAttribute("data-i18n");
     if(dict[key]) el.textContent = dict[key];
   });
-
   document.querySelectorAll(".lang-btn").forEach(btn=>{
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
-
-  try{ localStorage.setItem("aw2627_lang", lang); }catch(e){}
+  localStorage.setItem("aw2627_lang", lang);
 }
 
 (function init(){
-  let lang = "es";
-  try{
-    const saved = localStorage.getItem("aw2627_lang");
-    if(saved) lang = saved;
-    else {
-      const nav = (navigator.language || "").toLowerCase();
-      if(nav.startsWith("pt")) lang = "pt";
-      else if(nav.startsWith("en")) lang = "en";
-    }
-  }catch(e){}
-
-  setLang(lang);
-
+  const saved = localStorage.getItem("aw2627_lang") || "es";
+  setLang(saved);
   document.querySelectorAll(".lang-btn").forEach(btn=>{
     btn.addEventListener("click", ()=> setLang(btn.dataset.lang));
   });
